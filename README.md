@@ -1,5 +1,5 @@
 <div align="left">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Cascadia+Code&weight=700&size=17&color=C98A4A&center=false&pause=100000&lines=Hi,+I'm+ROTl24." alt="Hi" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Cascadia+Code&weight=700&size=17&color=C98A4A&center=false&pause=100000&lines=Hi,+I'm+dickbown." alt="Hi" />
   <p>
     <code>AI Builder</code>
     <code>Full-stack Learner</code>
