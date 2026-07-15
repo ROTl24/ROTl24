@@ -30,19 +30,25 @@
 
 <p align="center">
   <a href="https://github.com/ROTl24/wenyao">
-    <img src="./assets/project-wenyao-v2.png" width="49%" alt="WenYao — deterministic Liuyao facts, classical evidence, and constrained AI interpretation" />
+    <img src="./assets/project-wenyao-v2.png" width="92%" alt="WenYao — deterministic Liuyao facts, classical evidence, and constrained AI interpretation" />
   </a>
+</p>
+
+<p align="center">
   <a href="https://github.com/ROTl24/ai-web-generator">
-    <img src="./assets/project-ai-web-v2.png" width="49%" alt="AI Web Generator — from prompt to deployed product" />
+    <img src="./assets/project-ai-web-v2.png" width="92%" alt="AI Web Generator — from prompt to deployed product" />
   </a>
 </p>
 
 <p align="center">
   <a href="https://github.com/ROTl24/ai-dev-workflow-system">
-    <img src="./assets/project-workflow-v2.png" width="49%" alt="AI Dev Workflow — reliable delivery systems for AI coding tools" />
+    <img src="./assets/project-workflow-v2.png" width="92%" alt="AI Dev Workflow — reliable delivery systems for AI coding tools" />
   </a>
+</p>
+
+<p align="center">
   <a href="https://github.com/ROTl24/pet-github">
-    <img src="./assets/project-mika-v2.png" width="49%" alt="Mika — a tiny animated companion for Codex" />
+    <img src="./assets/project-mika-v2.png" width="92%" alt="Mika — a tiny animated companion for Codex" />
   </a>
 </p>
 
