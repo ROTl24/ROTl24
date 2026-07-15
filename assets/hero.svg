@@ -94,7 +94,7 @@
 
     <text class="mono" x="72" y="391" fill="#7E8088" font-size="9" letter-spacing="1.6">CURRENT MODE</text>
     <text class="mono" x="173" y="391" fill="#D8D4CB" font-size="9" letter-spacing="1.6">BUILDING IN PUBLIC</text>
-    <text class="mono" x="1157" y="391" fill="#686A72" font-size="9" text-anchor="end" letter-spacing="1.4">31.2304° N / 121.4737° E</text>
+    <text class="mono" x="1157" y="391" fill="#686A72" font-size="9" text-anchor="end" letter-spacing="1.4">OPEN SOURCE / SELECTED WORK</text>
   </g>
 
   <rect x="1" y="1" width="1198" height="428" rx="35" fill="none" stroke="#9D855F" stroke-opacity="0.2" stroke-width="2"/>
