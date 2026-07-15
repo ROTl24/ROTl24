@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/ROTl24">
-    <img src="./assets/hero.svg" width="100%" alt="dickbown — AI product builder and creative technologist" />
+    <img src="./assets/hero.svg?rev=b39c9a1" width="100%" alt="dickbown — AI product builder and creative technologist" />
   </a>
 </div>
 
