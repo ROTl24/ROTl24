@@ -1,0 +1,103 @@
+<svg width="1200" height="430" viewBox="0 0 1200 430" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">dickbown — AI product builder and creative technologist</title>
+  <desc id="desc">A dark editorial profile banner with warm amber accents, orbital geometry, and three principles: build, craft, ship.</desc>
+  <defs>
+    <linearGradient id="canvas" x1="28" y1="18" x2="1174" y2="421" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#12141B"/>
+      <stop offset="0.48" stop-color="#090A0F"/>
+      <stop offset="1" stop-color="#101015"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="78" y1="226" x2="604" y2="319" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE5B5"/>
+      <stop offset="0.48" stop-color="#E8A95E"/>
+      <stop offset="1" stop-color="#B9692F"/>
+    </linearGradient>
+    <radialGradient id="amberGlow" cx="0" cy="0" r="1" gradientTransform="translate(885 145) rotate(90) scale(235 320)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D58B49" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#D58B49" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blueGlow" cx="0" cy="0" r="1" gradientTransform="translate(1122 405) rotate(-126.5) scale(250 340)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4C7A91" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#4C7A91" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" stroke="#FFFFFF" stroke-opacity="0.035"/>
+    </pattern>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+    <clipPath id="frame">
+      <rect x="8" y="8" width="1184" height="414" rx="29"/>
+    </clipPath>
+    <style>
+      .sans { font-family: "Segoe UI Variable Display", "Aptos Display", system-ui, sans-serif; }
+      .mono { font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace; }
+      .pulse { animation: pulse 4.8s cubic-bezier(.32,.72,0,1) infinite; }
+      .drift { animation: drift 9s cubic-bezier(.32,.72,0,1) infinite alternate; transform-origin: 932px 155px; }
+      @keyframes pulse { 0%, 100% { opacity: .42; } 50% { opacity: 1; } }
+      @keyframes drift { from { transform: rotate(-4deg); } to { transform: rotate(5deg); } }
+      @media (prefers-reduced-motion: reduce) { .pulse, .drift { animation: none; } }
+    </style>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect x="8" y="8" width="1184" height="414" rx="29" fill="url(#canvas)"/>
+    <rect x="8" y="8" width="1184" height="414" rx="29" fill="url(#grid)"/>
+    <rect x="570" y="-88" width="610" height="480" fill="url(#amberGlow)"/>
+    <rect x="790" y="170" width="470" height="330" fill="url(#blueGlow)"/>
+    <ellipse cx="930" cy="156" rx="118" ry="92" fill="#D6904B" fill-opacity="0.055" filter="url(#blur)"/>
+
+    <path d="M672 40V390" stroke="#FFFFFF" stroke-opacity="0.08"/>
+    <path d="M42 361H1158" stroke="#FFFFFF" stroke-opacity="0.08"/>
+
+    <g transform="translate(72 54)">
+      <rect width="202" height="30" rx="15" fill="#FFFFFF" fill-opacity="0.045"/>
+      <rect x="0.5" y="0.5" width="201" height="29" rx="14.5" stroke="#FFFFFF" stroke-opacity="0.1"/>
+      <circle class="pulse" cx="16" cy="15" r="3.5" fill="#E9AA63"/>
+      <text class="mono" x="29" y="19" fill="#D8D4CB" font-size="10" letter-spacing="1.45">ROTl24 / PROFILE INDEX</text>
+    </g>
+
+    <text class="sans" x="70" y="136" fill="#8E9098" font-size="13" font-weight="600" letter-spacing="4.2">AI PRODUCT BUILDER · CREATIVE TECHNOLOGIST</text>
+    <text class="sans" x="66" y="232" fill="#F3F0E9" font-size="94" font-weight="760" letter-spacing="-5.2">DICK</text>
+    <text class="sans" x="66" y="315" fill="url(#amber)" font-size="94" font-weight="760" letter-spacing="-5.2">BOWN</text>
+    <text class="mono" x="75" y="341" fill="#7E8088" font-size="11" letter-spacing="1.25">IDEAS  →  SYSTEMS  →  PRODUCTS</text>
+
+    <g class="drift">
+      <circle cx="932" cy="156" r="82" stroke="#E6B273" stroke-opacity="0.19"/>
+      <circle cx="932" cy="156" r="61" stroke="#FFFFFF" stroke-opacity="0.08" stroke-dasharray="3 8"/>
+      <path d="M871 101C899 73 950 67 985 92" stroke="#E4A45D" stroke-opacity="0.72" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M997 208C968 239 914 243 879 216" stroke="#6F9AA8" stroke-opacity="0.5" stroke-width="1.2" stroke-linecap="round"/>
+      <circle cx="870" cy="102" r="4" fill="#E9AA63"/>
+      <circle cx="997" cy="208" r="3" fill="#77A6B3"/>
+    </g>
+    <text class="sans" x="932" y="148" fill="#EEEAE2" font-size="33" font-weight="690" text-anchor="middle" letter-spacing="-1.4">D/B</text>
+    <text class="mono" x="932" y="172" fill="#898B92" font-size="9" text-anchor="middle" letter-spacing="2">EST. 2022</text>
+
+    <g transform="translate(714 268)">
+      <rect width="138" height="70" rx="15" fill="#FFFFFF" fill-opacity="0.038"/>
+      <rect x="0.5" y="0.5" width="137" height="69" rx="14.5" stroke="#FFFFFF" stroke-opacity="0.085"/>
+      <text class="mono" x="15" y="21" fill="#E6A55F" font-size="9" letter-spacing="1.6">01 / BUILD</text>
+      <text class="sans" x="15" y="47" fill="#DAD7D0" font-size="13" font-weight="600">agentic systems</text>
+    </g>
+    <g transform="translate(866 268)">
+      <rect width="138" height="70" rx="15" fill="#FFFFFF" fill-opacity="0.038"/>
+      <rect x="0.5" y="0.5" width="137" height="69" rx="14.5" stroke="#FFFFFF" stroke-opacity="0.085"/>
+      <text class="mono" x="15" y="21" fill="#8BB2BD" font-size="9" letter-spacing="1.6">02 / CRAFT</text>
+      <text class="sans" x="15" y="47" fill="#DAD7D0" font-size="13" font-weight="600">interfaces with intent</text>
+    </g>
+    <g transform="translate(1018 268)">
+      <rect width="138" height="70" rx="15" fill="#FFFFFF" fill-opacity="0.038"/>
+      <rect x="0.5" y="0.5" width="137" height="69" rx="14.5" stroke="#FFFFFF" stroke-opacity="0.085"/>
+      <text class="mono" x="15" y="21" fill="#B8A383" font-size="9" letter-spacing="1.6">03 / SHIP</text>
+      <text class="sans" x="15" y="47" fill="#DAD7D0" font-size="13" font-weight="600">working products</text>
+    </g>
+
+    <text class="mono" x="72" y="391" fill="#7E8088" font-size="9" letter-spacing="1.6">CURRENT MODE</text>
+    <text class="mono" x="173" y="391" fill="#D8D4CB" font-size="9" letter-spacing="1.6">BUILDING IN PUBLIC</text>
+    <text class="mono" x="1157" y="391" fill="#686A72" font-size="9" text-anchor="end" letter-spacing="1.4">31.2304° N / 121.4737° E</text>
+  </g>
+
+  <rect x="1" y="1" width="1198" height="428" rx="35" fill="none" stroke="#9D855F" stroke-opacity="0.2" stroke-width="2"/>
+  <rect x="8.5" y="8.5" width="1183" height="413" rx="28.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.08"/>
+</svg>
+
