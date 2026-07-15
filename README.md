@@ -1,79 +1,64 @@
 <div align="center">
-  <a href="https://github.com/ROTl24">
-    <img src="./assets/hero.svg?rev=b39c9a1" width="100%" alt="dickbown — AI product builder and creative technologist" />
-  </a>
+  <img src="./assets/sticker-hero-v2.webp" width="100%" alt="dickbown — illustrated sticker collage profile banner" />
 </div>
 
 <br />
 
 <div align="center">
-  <strong>I turn messy ideas into useful, well-crafted AI products.</strong>
+  <strong>I make AI products that feel useful, human, and a little bit magical.</strong>
   <br />
-  <sub>Agent systems · full-stack products · creative tooling</sub>
+  <sub>Turning complicated ideas into working tools — with equal care for the system and the surface.</sub>
 </div>
 
 <br />
 
 <div align="center">
-  <a href="https://github.com/ROTl24?tab=repositories">Selected work</a>
+  <code>agent systems</code>
   &nbsp;·&nbsp;
-  <a href="mailto:xdickbown@gmail.com">Say hello</a>
+  <code>creative tooling</code>
+  &nbsp;·&nbsp;
+  <code>full-stack products</code>
+  &nbsp;·&nbsp;
+  <code>open source</code>
 </div>
 
 <br />
 
-## Selected work
+<div align="center">
+  <img src="./assets/projects-label-v2.png" width="74%" alt="Projects from my sketchbook" />
+</div>
 
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <code>01 / DESKTOP AI</code>
-      <h3>问爻 · WenYao</h3>
-      <p>A Windows-first ink-wash desktop app that connects deterministic Liuyao facts, classical evidence, and constrained AI interpretation.</p>
-      <p><code>Electron</code> <code>React</code> <code>TypeScript</code> <code>Three.js</code></p>
-      <a href="https://github.com/ROTl24/wenyao">Explore the project ↗</a>
-    </td>
-    <td width="50%" valign="top">
-      <code>02 / AGENTIC BUILD</code>
-      <h3>AI Web Generator</h3>
-      <p>A natural-language platform for generating, iterating, versioning, and deploying complete web applications through an agentic workflow.</p>
-      <p><code>Java</code> <code>LangGraph4j</code> <code>Vue</code> <code>TypeScript</code></p>
-      <a href="https://github.com/ROTl24/ai-web-generator">Explore the project ↗</a>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <code>03 / DEV SYSTEMS</code>
-      <h3>AI Dev Workflow System</h3>
-      <p>An open workflow for turning AI coding tools into a reliable delivery process with roles, phase gates, test loops, and durable artifacts.</p>
-      <p><code>Codex</code> <code>Claude Code</code> <code>Cursor</code> <code>Gemini CLI</code></p>
-      <a href="https://github.com/ROTl24/ai-dev-workflow-system">Explore the project ↗</a>
-    </td>
-    <td width="50%" valign="top">
-      <code>04 / PLAYFUL TOOLS</code>
-      <h3>Mika</h3>
-      <p>A tiny animated desktop companion for Codex — equal parts character design, motion study, and developer delight.</p>
-      <p><code>Pixel Art</code> <code>Motion</code> <code>Open Source</code></p>
-      <a href="https://github.com/ROTl24/pet-github">Meet Mika ↗</a>
-    </td>
-  </tr>
-</table>
+<p align="center">
+  <a href="https://github.com/ROTl24/wenyao">
+    <img src="./assets/project-wenyao-v2.png" width="49%" alt="WenYao — deterministic Liuyao facts, classical evidence, and constrained AI interpretation" />
+  </a>
+  <a href="https://github.com/ROTl24/ai-web-generator">
+    <img src="./assets/project-ai-web-v2.png" width="49%" alt="AI Web Generator — from prompt to deployed product" />
+  </a>
+</p>
 
-<br />
-
-## Working principles
-
-```text
-Truth before theater.       Build deterministic foundations before AI interpretation.
-Taste is a requirement.     Utility and craft belong in the same product.
-Ship the whole thing.       From architecture and tests to the artifact people can use.
-```
+<p align="center">
+  <a href="https://github.com/ROTl24/ai-dev-workflow-system">
+    <img src="./assets/project-workflow-v2.png" width="49%" alt="AI Dev Workflow — reliable delivery systems for AI coding tools" />
+  </a>
+  <a href="https://github.com/ROTl24/pet-github">
+    <img src="./assets/project-mika-v2.png" width="49%" alt="Mika — a tiny animated companion for Codex" />
+  </a>
+</p>
 
 <br />
 
 <div align="center">
-  <sub>MAKE IT USEFUL · MAKE IT CLEAR · MAKE IT LAST</sub>
-  <br /><br />
-  <a href="mailto:xdickbown@gmail.com"><strong>Let’s build something worth using. ↗</strong></a>
+  <sub>CURRENTLY COLLECTING</sub>
+  <br />
+  <strong>reliable agents · thoughtful interfaces · open-source stories</strong>
+</div>
+
+<br />
+
+<div align="center">
+  <a href="mailto:xdickbown@gmail.com">
+    <img src="./assets/footer-sticker-v2.png" width="74%" alt="Let's make something useful and wonderful — say hello" />
+  </a>
 </div>
 
