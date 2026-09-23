@@ -99,7 +99,8 @@ def neofetch_block(prs: list[dict]) -> list[dict]:
         [("─" * len(f"{NAME}@github"), "out")],
         [("Role      ", "key"), ("AI product builder", "cmd")],
         [("Roots     ", "key"), ("Japanese · Chinese", "cmd")],
-        [("Location  ", "key"), ("nomad · wherever the Wi-Fi is decent", "cmd")],
+        [("Location  ", "key"), ("Germany · 12 countries so far", "cmd")],
+        [("Languages ", "key"), ("日本語 · 中文 · English", "cmd")],
         [("Focus     ", "key"), ("agents · creative tooling · full-stack", "cmd")],
         [("Projects  ", "key"), ("wenyao", "orange"), (" · ", "out"), ("tiktok-ai-skills", "orange")],
         [("Upstream  ", "key"), (f"{merged} merged pull requests", "cmd")],
@@ -211,7 +212,7 @@ def render_svg(prs: list[dict]) -> str:
 
 TICKER_PATH = os.path.join(ROOT, "assets", "ticker.svg")
 TICKER_ITEMS = ["agent systems", "creative tooling", "full-stack products", "wenyao",
-                "tiktok-ai-skills", "open source", "jp × cn", "global nomad", "weird little products"]
+                "tiktok-ai-skills", "open source", "jp × cn", "based in germany", "12 countries", "odd little products"]
 
 
 def render_ticker() -> str:

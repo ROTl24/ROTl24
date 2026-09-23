@@ -9,11 +9,13 @@
 
 ### ✦ About
 
-Half Japanese, half Chinese, and permanently on the move. I live out of a suitcase and work from wherever the Wi-Fi is decent.
+Japanese-Chinese, currently living in Germany. Twelve countries so far, not planning to stop.
 
-I like building products that are a little strange and a lot of fun: tools that have no business existing, yet somehow make your day better. Some of them ship, some stay experiments, all of them teach me something.
+I build AI products for a living, but the ones I actually enjoy are the odd ones. wenyao is a Liuyao divination app that refuses to make things up. tiktok-ai-skills turns one product photo into a UGC ad plan. Neither of these needed to exist. I made them anyway.
 
-Open source is where I learned most of what I know, so I try to give back. When something breaks in a library I use, I fix it upstream instead of working around it.
+Open source taught me most of what I know. When a library I use breaks, I send the fix upstream instead of patching around it. Those PRs are listed below.
+
+Say hi in Japanese, Chinese or English.
 
 <br>
 
