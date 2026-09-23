@@ -7,6 +7,16 @@
 
 <br>
 
+### ✦ About
+
+Half Japanese, half Chinese, and permanently on the move. I live out of a suitcase and work from wherever the Wi-Fi is decent.
+
+I like building products that are a little strange and a lot of fun: tools that have no business existing, yet somehow make your day better. Some of them ship, some stay experiments, all of them teach me something.
+
+Open source is where I learned most of what I know, so I try to give back. When something breaks in a library I use, I fix it upstream instead of working around it.
+
+<br>
+
 ### ⌘ Projects
 
 **[wenyao](https://github.com/ROTl24/wenyao)** · TypeScript · Windows
