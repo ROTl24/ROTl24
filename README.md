@@ -1,70 +1,35 @@
-<div align="center">
-  <img src="./assets/sticker-hero-v2.webp" width="100%" alt="dickbown — illustrated sticker collage profile banner" />
-</div>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/hero-dark.svg">
+  <img src="./assets/hero-light.svg" width="100%" alt="dickbown: Care for the system, and the surface.">
+</picture>
 
-<br />
+<br>
 
-<div align="center">
-  <strong>I make AI products that feel useful, human, and a little bit magical.</strong>
-  <br />
-  <sub>Turning complicated ideas into working tools — with equal care for the system and the surface.</sub>
-</div>
+I'm **dickbown**. I build AI products: agent systems, creative tooling, and full-stack apps.
+I care about the part people touch as much as the part they never see.
 
-<br />
+<br>
 
-<div align="center">
-  <code>agent systems</code>
-  &nbsp;·&nbsp;
-  <code>creative tooling</code>
-  &nbsp;·&nbsp;
-  <code>full-stack products</code>
-  &nbsp;·&nbsp;
-  <code>open source</code>
-</div>
+### Projects
 
-<br />
+| Project | What it is | Stack |
+| :--- | :--- | :--- |
+| **[wenyao](https://github.com/ROTl24/wenyao)** | Evidence-driven Liuyao desktop app: deterministic hexagram facts, classical sources, and constrained AI interpretation. | TypeScript · Windows |
+| **[ai&#8209;dev&#8209;workflow&#8209;system](https://github.com/ROTl24/ai-dev-workflow-system)** | An open delivery workflow for AI coding tools: Codex, Claude Code, Cursor, Gemini CLI, and GitHub Copilot. | PowerShell · Markdown |
+| **[ai&#8209;web&#8209;generator](https://github.com/ROTl24/ai-web-generator)** | From a natural-language prompt to a complete, deployable web project. | Java |
+| **[daily&#8209;summary&#8209;agent](https://github.com/ROTl24/daily-summary-agent)** | Local workbench that turns Git evidence and notes into daily Markdown summaries. | JavaScript |
+| **[tiktok&#8209;ai&#8209;skills](https://github.com/ROTl24/tiktok-ai-skills)** | Agent skill: product photo in, shoot-ready UGC ad plan out. Storyboard-first, with compliance routing. | Agent Skill |
+| **[pet&#8209;github](https://github.com/ROTl24/pet-github)** | Mika, a small animated desktop companion for Codex. | Desktop |
 
-<div align="center">
-  <img src="./assets/projects-label-v2.png" width="74%" alt="Projects from my sketchbook" />
-</div>
+<br>
 
-<p align="center">
-  <a href="https://github.com/ROTl24/wenyao">
-    <img src="./assets/project-wenyao-v2.png" width="92%" alt="WenYao — deterministic Liuyao facts, classical evidence, and constrained AI interpretation" />
-  </a>
-</p>
+### Now
 
-<p align="center">
-  <a href="https://github.com/ROTl24/ai-web-generator">
-    <img src="./assets/project-ai-web-v2.png" width="92%" alt="AI Web Generator — from prompt to deployed product" />
-  </a>
-</p>
+Reliable agents &nbsp;·&nbsp; thoughtful interfaces &nbsp;·&nbsp; open-source tooling
 
-<p align="center">
-  <a href="https://github.com/ROTl24/ai-dev-workflow-system">
-    <img src="./assets/project-workflow-v2.png" width="92%" alt="AI Dev Workflow — reliable delivery systems for AI coding tools" />
-  </a>
-</p>
+<br>
 
-<p align="center">
-  <a href="https://github.com/ROTl24/pet-github">
-    <img src="./assets/project-mika-v2.png" width="92%" alt="Mika — a tiny animated companion for Codex" />
-  </a>
-</p>
+### Contact
 
-<br />
-
-<div align="center">
-  <sub>CURRENTLY COLLECTING</sub>
-  <br />
-  <strong>reliable agents · thoughtful interfaces · open-source stories</strong>
-</div>
-
-<br />
-
-<div align="center">
-  <a href="mailto:xdickbown@gmail.com">
-    <img src="./assets/footer-sticker-v2.png" width="74%" alt="Let's make something useful and wonderful — say hello" />
-  </a>
-</div>
+<a href="mailto:xdickbown@gmail.com">xdickbown@gmail.com</a>
 
