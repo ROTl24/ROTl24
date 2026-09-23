@@ -22,14 +22,23 @@ Turns a product photo into a shoot-ready TikTok UGC ad plan. Storyboard-first, w
 Fixes I've sent to repositories I don't own, newest first.
 
 <!-- prs:start -->
-| | Repository | Pull request | |
-| :-- | :-- | :-- | --: |
-| `merged` | [NandhaKishorM/laya](https://github.com/NandhaKishorM/laya) | [fix(lang): recognize Armenian text when routing requests](https://github.com/NandhaKishorM/laya/pull/23) | 2026&#8209;09&#8209;20 |
-| `open` | [vercel-labs/json-render](https://github.com/vercel-labs/json-render) | [fix(core): escape JSON Pointer keys in flattenToPointers](https://github.com/vercel-labs/json-render/pull/345) | 2026&#8209;09&#8209;19 |
-| `closed` | [python-pillow/Pillow](https://github.com/python-pillow/Pillow) | [Keep ImageOps.contain dimensions at least one pixel](https://github.com/python-pillow/Pillow/pull/9998) | 2026&#8209;09&#8209;13 |
-| `merged` | [microsoft/markitdown](https://github.com/microsoft/markitdown) | [Trim CSV blank runs without repeatedly shifting the row list](https://github.com/microsoft/markitdown/pull/2450) | 2026&#8209;09&#8209;10 |
-| `open` | [theskumar/python-dotenv](https://github.com/theskumar/python-dotenv) | [Fix variable expansion in dotenv run --no-override](https://github.com/theskumar/python-dotenv/pull/698) | 2026&#8209;09&#8209;08 |
-| `merged` | [msitarzewski/agency-agents-app](https://github.com/msitarzewski/agency-agents-app) | [Prevent background console windows from flashing on Windows](https://github.com/msitarzewski/agency-agents-app/pull/85) | 2026&#8209;08&#8209;10 |
+🟣 **[NandhaKishorM/laya](https://github.com/NandhaKishorM/laya)** [#23](https://github.com/NandhaKishorM/laya/pull/23) · fix(lang): recognize Armenian text when routing requests  
+<sub>merged · 2026-09-20</sub>
+
+🟢 **[vercel-labs/json-render](https://github.com/vercel-labs/json-render)** [#345](https://github.com/vercel-labs/json-render/pull/345) · fix(core): escape JSON Pointer keys in flattenToPointers  
+<sub>open · 2026-09-19</sub>
+
+🔴 **[python-pillow/Pillow](https://github.com/python-pillow/Pillow)** [#9998](https://github.com/python-pillow/Pillow/pull/9998) · Keep ImageOps.contain dimensions at least one pixel  
+<sub>closed · 2026-09-13</sub>
+
+🟣 **[microsoft/markitdown](https://github.com/microsoft/markitdown)** [#2450](https://github.com/microsoft/markitdown/pull/2450) · Trim CSV blank runs without repeatedly shifting the row list  
+<sub>merged · 2026-09-10</sub>
+
+🟢 **[theskumar/python-dotenv](https://github.com/theskumar/python-dotenv)** [#698](https://github.com/theskumar/python-dotenv/pull/698) · Fix variable expansion in dotenv run --no-override  
+<sub>open · 2026-09-08</sub>
+
+🟣 **[msitarzewski/agency-agents-app](https://github.com/msitarzewski/agency-agents-app)** [#85](https://github.com/msitarzewski/agency-agents-app/pull/85) · Prevent background console windows from flashing on Windows  
+<sub>merged · 2026-08-10</sub>
 
 <sub>Updated 2026-09-23 · regenerated daily by GitHub Actions</sub>
 <!-- prs:end -->

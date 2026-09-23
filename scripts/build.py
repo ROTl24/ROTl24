@@ -72,11 +72,9 @@ PROMPT = "~ $ "
 FONT = ("ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, "
         "'Liberation Mono', 'DejaVu Sans Mono', monospace")
 
-C = dict(bg="#14100C", border="#2B2119", bar="#1C1611", title="#8A7A6A",
-         prompt="#FF9F43", cmd="#F5EDE4", out="#A89D91", dir="#FFB067", key="#FF9F43",
-         merged="#FFB067", open="#7CD992", closed="#FF6B6B", accent="#FFB067",
-         art="url(#flame)", sw1="#FF6B35", sw2="#FF8C42", sw3="#FF9F43", sw4="#FFB067",
-         sw5="#FFC98B", sw6="#F5EDE4", sw7="#A89D91", sw8="#3A2E24")
+C = dict(bg="#0B0F17", border="#1C2433", bar="#111826", title="#6B7A90",
+         prompt="#3FB950", cmd="#E6EDF3", out="#8B98A9", key="#C9D1D9", art="#E6EDF3",
+         orange="#FF9F43", merged="#D2A8FF", open="#3FB950", closed="#F85149")
 
 ART = [  # figlet "slant"
     "       ___      __   __                      ",
@@ -102,7 +100,7 @@ def neofetch_block(prs: list[dict]) -> list[dict]:
         [("─" * len(f"{NAME}@github"), "out")],
         [("Role      ", "key"), ("AI product builder", "cmd")],
         [("Focus     ", "key"), ("agents · creative tooling · full-stack", "cmd")],
-        [("Projects  ", "key"), ("wenyao", "dir"), (" · ", "out"), ("tiktok-ai-skills", "dir")],
+        [("Projects  ", "key"), ("wenyao", "orange"), (" · ", "out"), ("tiktok-ai-skills", "orange")],
         [("Upstream  ", "key"), (f"{merged} merged · {open_} open pull requests", "cmd")],
         [("Contact   ", "key"), ("xdickbown@gmail.com", "cmd")],
     ]
@@ -114,8 +112,6 @@ def neofetch_block(prs: list[dict]) -> list[dict]:
         if i < len(info):
             segs += info[i]
         rows.append({"typed": False, "segs": segs})
-    rows.append({"typed": False, "segs": [("", "out")]})
-    rows.append({"typed": False, "segs": [("███ ", f"sw{k}") for k in range(1, 9)]})
     return rows
 
 
@@ -128,13 +124,15 @@ def terminal_lines(prs: list[dict]) -> list[dict]:
         {"typed": False, "segs": [("", "out")]},
         {"typed": True, "segs": P + [("gh pr list --author @me --search 'is:pr -user:@me' --limit 4", "cmd")]},
     ]
-    repo_w = 30
+    repo_w, num_w = 30, 6
     for pr in prs[:4]:
         repo = fit(pr["repo"], repo_w).ljust(repo_w)
+        num = f"#{pr['number']}".ljust(num_w)
         state = pr["state"].ljust(7)
-        title = fit(pr["title"], MAX_COLS - 2 - 7 - 1 - repo_w - 2)
+        title = fit(pr["title"], MAX_COLS - 2 - 7 - 1 - repo_w - 1 - num_w - 1)
         lines.append({"typed": False, "segs": [
-            ("● ", pr["state"]), (state, pr["state"]), (" ", "out"), (repo, "accent"), ("  ", "out"), (title, "out"),
+            ("● ", pr["state"]), (state, pr["state"]), (" ", "out"), (repo, "cmd"), (" ", "out"),
+            (num, "orange"), (" ", "out"), (title, "out"),
         ]})
     lines.append({"typed": True, "segs": list(P)})  # idle prompt with a blinking caret
     return lines
@@ -190,13 +188,13 @@ def render_svg(prs: list[dict]) -> str:
                          f'dur="1.1s" begin="{t:.2f}s" repeatCount="indefinite"/>')
 
     caret_el = (f'<rect x="{PAD_X}" y="{TOP - 17}" width="{CW:.1f}" height="22" rx="1" '
-                f'fill="{C["prompt"]}" opacity="0">' + "".join(caret) + "</rect>")
+                f'fill="{C["cmd"]}" opacity="0">' + "".join(caret) + "</rect>")
     nl = "\n"
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{height}" viewBox="0 0 {W} {height}" role="img" aria-labelledby="t d">
 <title id="t">{NAME} ({LOGIN}) terminal</title>
 <desc id="d">Animated terminal: whoami, projects wenyao and tiktok-ai-skills, and recent pull requests to other open-source repositories.</desc>
 <style>text{{font-family:{FONT};font-size:{FS}px;white-space:pre}}</style>
-<defs><linearGradient id="flame" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FF6B35"/><stop offset="0.55" stop-color="#FF9F43"/><stop offset="1" stop-color="#FFC98B"/></linearGradient>{"".join(defs)}</defs>
+<defs>{"".join(defs)}</defs>
 <rect x="0.5" y="0.5" width="{W - 1}" height="{height - 1}" rx="14" fill="{C['bg']}" stroke="{C['border']}"/>
 <path d="M14.5 0.5h{W - 29}a14 14 0 0 1 14 14v31.5H0.5V14.5a14 14 0 0 1 14-14z" fill="{C['bar']}"/>
 <line x1="0.5" y1="46" x2="{W - 0.5}" y2="46" stroke="{C['border']}"/>
@@ -218,17 +216,21 @@ TICKER_ITEMS = ["agent systems", "creative tooling", "full-stack products", "wen
 def render_ticker() -> str:
     """Orange strip with an endlessly scrolling line of text (SMIL translate, seamless loop)."""
     h, fs, cw = 46, 14, 8.4
-    phrase = "".join(f"{it.upper()}   ✦   " for it in TICKER_ITEMS)
-    n = len(phrase)
-    seg_w = n * cw
+    projects = {"wenyao", "tiktok-ai-skills"}
+    segs = []
+    for it in TICKER_ITEMS:
+        segs.append((it.upper(), "orange" if it in projects else "out"))
+        segs.append(("   ✦   ", "title"))
+    phrase = "".join(t for t, _ in segs)
+    seg_w = len(phrase) * cw
     reps = int(W / seg_w) + 2
-    text = html.escape(phrase * reps)
+    text = "".join(f'<tspan fill="{C[c]}">{html.escape(t)}</tspan>' for t, c in segs * reps)
     total_w = seg_w * reps
     dur = seg_w / 60  # 60 px per second
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{h}" viewBox="0 0 {W} {h}" role="img" aria-label="{html.escape(' · '.join(TICKER_ITEMS))}">
 <defs><clipPath id="strip"><rect x="0" y="0" width="{W}" height="{h}" rx="10"/></clipPath></defs>
-<rect width="{W}" height="{h}" rx="10" fill="{C['sw2']}"/>
-<g clip-path="url(#strip)"><text x="0" y="{h / 2 + fs * 0.36:.1f}" fill="{C['bg']}" font-family="{FONT}" font-size="{fs}px" font-weight="700" letter-spacing="0.08em" textLength="{total_w:.1f}" lengthAdjust="spacing" xml:space="preserve">{text}<animateTransform attributeName="transform" type="translate" from="0 0" to="{-seg_w:.1f} 0" dur="{dur:.2f}s" repeatCount="indefinite"/></text></g>
+<rect x="0.5" y="0.5" width="{W - 1}" height="{h - 1}" rx="10" fill="{C['bar']}" stroke="{C['border']}"/>
+<g clip-path="url(#strip)"><text x="0" y="{h / 2 + fs * 0.36:.1f}" font-family="{FONT}" font-size="{fs}px" font-weight="600" letter-spacing="0.08em" textLength="{total_w:.1f}" lengthAdjust="spacing" xml:space="preserve">{text}<animateTransform attributeName="transform" type="translate" from="0 0" to="{-seg_w:.1f} 0" dur="{dur:.2f}s" repeatCount="indefinite"/></text></g>
 </svg>
 """
 
@@ -237,11 +239,12 @@ def render_ticker() -> str:
 
 
 def prs_markdown(prs: list[dict]) -> str:
-    rows = ["| | Repository | Pull request | |", "| :-- | :-- | :-- | --: |"]
+    icon = {"merged": "🟣", "open": "🟢", "closed": "🔴"}
+    rows = []
     for pr in prs[:8]:
-        rows.append(f"| `{pr['state']}` | [{pr['repo']}](https://github.com/{pr['repo']}) "
-                    f"| [{pr['title']}]({pr['url']}) | {pr['date'].replace('-', '&#8209;')} |")
-    rows.append("")
+        rows.append(f"{icon[pr['state']]} **[{pr['repo']}](https://github.com/{pr['repo']})** "
+                    f"[#{pr['number']}]({pr['url']}) · {pr['title']}  ")
+        rows.append(f"<sub>{pr['state']} · {pr['date']}</sub>\n")
     rows.append(f"<sub>Updated {date.today().isoformat()} · regenerated daily by GitHub Actions</sub>")
     return "\n".join(rows)
 
