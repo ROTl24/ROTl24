@@ -1,6 +1,6 @@
 """Build the profile README.
 
-- Fetches pull requests authored by LOGIN in repositories LOGIN does not own.
+- Fetches merged pull requests authored by LOGIN in repositories LOGIN does not own.
 - Renders assets/terminal.svg: a self-contained animated terminal (SMIL, no scripts, no external fonts).
 - Rewrites the block between <!-- prs:start --> and <!-- prs:end --> in README.md.
 
@@ -58,7 +58,7 @@ def fetch_prs() -> list[dict]:
             "state": state,
             "date": it["created_at"][:10],
         })
-    return prs
+    return [p for p in prs if p["state"] == "merged"]
 
 
 # ------------------------------------------------------------- terminal -----
@@ -93,15 +93,14 @@ def fit(s: str, n: int) -> str:
 
 def neofetch_block(prs: list[dict]) -> list[dict]:
     """Side-by-side figlet name (left) and key/value info (right), then a colour swatch row."""
-    merged = sum(p["state"] == "merged" for p in prs)
-    open_ = sum(p["state"] == "open" for p in prs)
+    merged = len(prs)
     info = [
         [(f"{NAME}@github", "key")],
         [("─" * len(f"{NAME}@github"), "out")],
         [("Role      ", "key"), ("AI product builder", "cmd")],
         [("Focus     ", "key"), ("agents · creative tooling · full-stack", "cmd")],
         [("Projects  ", "key"), ("wenyao", "orange"), (" · ", "out"), ("tiktok-ai-skills", "orange")],
-        [("Upstream  ", "key"), (f"{merged} merged · {open_} open pull requests", "cmd")],
+        [("Upstream  ", "key"), (f"{merged} merged pull requests", "cmd")],
         [("Contact   ", "key"), ("xdickbown@gmail.com", "cmd")],
     ]
     rows: list[dict] = []
@@ -122,7 +121,7 @@ def terminal_lines(prs: list[dict]) -> list[dict]:
     lines += neofetch_block(prs)
     lines += [
         {"typed": False, "segs": [("", "out")]},
-        {"typed": True, "segs": P + [("gh pr list --author @me --search 'is:pr -user:@me' --limit 4", "cmd")]},
+        {"typed": True, "segs": P + [("gh pr list --author @me --state merged --search '-user:@me' --limit 4", "cmd")]},
     ]
     repo_w, num_w = 30, 6
     for pr in prs[:4]:
@@ -244,7 +243,7 @@ def prs_markdown(prs: list[dict]) -> str:
         icon = f'<img src="./assets/icons/{pr["state"]}.svg" width="16" height="16" alt="{pr["state"]}" align="top">'
         rows.append(f"{icon}&nbsp; **[{pr['repo']}](https://github.com/{pr['repo']})** "
                     f"[#{pr['number']}]({pr['url']}) · {pr['title']}  ")
-        rows.append(f"<sub>{pr['state']} · {pr['date']}</sub>\n")
+        rows.append(f"<sub>{pr['date']}</sub>\n")
     rows.append(f"<sub>Updated {date.today().isoformat()} · regenerated daily by GitHub Actions</sub>")
     return "\n".join(rows)
 
