@@ -239,10 +239,10 @@ def render_ticker() -> str:
 
 
 def prs_markdown(prs: list[dict]) -> str:
-    icon = {"merged": "🟣", "open": "🟢", "closed": "🔴"}
     rows = []
     for pr in prs[:8]:
-        rows.append(f"{icon[pr['state']]} **[{pr['repo']}](https://github.com/{pr['repo']})** "
+        icon = f'<img src="./assets/icons/{pr["state"]}.svg" width="16" height="16" alt="{pr["state"]}" align="top">'
+        rows.append(f"{icon}&nbsp; **[{pr['repo']}](https://github.com/{pr['repo']})** "
                     f"[#{pr['number']}]({pr['url']}) · {pr['title']}  ")
         rows.append(f"<sub>{pr['state']} · {pr['date']}</sub>\n")
     rows.append(f"<sub>Updated {date.today().isoformat()} · regenerated daily by GitHub Actions</sub>")
