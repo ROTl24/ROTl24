@@ -1,13 +1,13 @@
 <p align="center">
-  <img src="./assets/terminal.svg" width="100%" alt="dickbown: whoami, projects, recent pull requests">
+  <img src="./assets/terminal.svg" width="100%" alt="dickbown: neofetch, projects, recent pull requests">
 </p>
-
-I'm **dickbown**. I build AI products: agent systems, creative tooling, and full-stack apps.
-I care about the part people touch as much as the part they never see.
+<p align="center">
+  <img src="./assets/ticker.svg" width="100%" alt="agent systems · creative tooling · full-stack products · wenyao · tiktok-ai-skills · open source">
+</p>
 
 <br>
 
-### Projects
+### ⌘ Projects
 
 **[wenyao](https://github.com/ROTl24/wenyao)** · TypeScript · Windows
 An evidence-driven Liuyao desktop app: deterministic hexagram facts, classical sources, and constrained AI interpretation.
@@ -17,9 +17,9 @@ Turns a product photo into a shoot-ready TikTok UGC ad plan. Storyboard-first, w
 
 <br>
 
-### Open-source contributions
+### ↗ Upstream pull requests
 
-Pull requests to repositories I don't own, newest first.
+Fixes I've sent to repositories I don't own, newest first.
 
 <!-- prs:start -->
 | | Repository | Pull request | |
@@ -36,6 +36,6 @@ Pull requests to repositories I don't own, newest first.
 
 <br>
 
-### Contact
+### ✉ Contact
 
 <a href="mailto:xdickbown@gmail.com">xdickbown@gmail.com</a>
