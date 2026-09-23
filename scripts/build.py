@@ -1,0 +1,202 @@
+"""Build the profile README.
+
+- Fetches pull requests authored by LOGIN in repositories LOGIN does not own.
+- Renders assets/terminal.svg: a self-contained animated terminal (SMIL, no scripts, no external fonts).
+- Rewrites the block between <!-- prs:start --> and <!-- prs:end --> in README.md.
+
+Run from the repo root:  python scripts/build.py
+Auth: GH_TOKEN or GITHUB_TOKEN in the environment (falls back to `gh auth token`).
+"""
+from __future__ import annotations
+
+import html
+import json
+import os
+import re
+import subprocess
+import urllib.parse
+import urllib.request
+from datetime import date
+
+LOGIN = "ROTl24"
+NAME = "dickbown"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SVG_PATH = os.path.join(ROOT, "assets", "terminal.svg")
+README_PATH = os.path.join(ROOT, "README.md")
+
+# ---------------------------------------------------------------- data ------
+
+
+def token() -> str:
+    t = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
+    if t:
+        return t
+    return subprocess.check_output(["gh", "auth", "token"], text=True).strip()
+
+
+def fetch_prs() -> list[dict]:
+    q = f"author:{LOGIN} type:pr -user:{LOGIN}"
+    url = ("https://api.github.com/search/issues?q=" + urllib.parse.quote(q)
+           + "&sort=created&order=desc&per_page=50")
+    req = urllib.request.Request(url, headers={
+        "Authorization": f"Bearer {token()}",
+        "Accept": "application/vnd.github+json",
+        "User-Agent": f"{LOGIN}-profile-builder",
+    })
+    with urllib.request.urlopen(req, timeout=30) as r:
+        items = json.load(r)["items"]
+    prs = []
+    for it in items:
+        repo = it["repository_url"].split("/repos/")[1]
+        merged = bool((it.get("pull_request") or {}).get("merged_at"))
+        state = "merged" if merged else it["state"]  # merged | open | closed
+        prs.append({
+            "repo": repo,
+            "number": it["number"],
+            "title": it["title"],
+            "url": it["html_url"],
+            "state": state,
+            "date": it["created_at"][:10],
+        })
+    return prs
+
+
+# ------------------------------------------------------------- terminal -----
+
+W = 1100
+PAD_X, LINE_H, TOP = 40, 30, 94           # left padding, line height, first baseline
+FS, CW = 18, 10.8                         # font size, forced character advance
+MAX_COLS = int((W - 2 * PAD_X) / CW)      # characters per line
+CMD_CPS = 0.055                           # seconds per typed character
+PROMPT = "~ $ "
+FONT = ("ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, "
+        "'Liberation Mono', 'DejaVu Sans Mono', monospace")
+
+C = dict(bg="#0B0F17", border="#1C2433", bar="#111826", title="#6B7A90",
+         prompt="#3FB950", cmd="#E6EDF3", out="#8B98A9", dir="#79C0FF",
+         merged="#D2A8FF", open="#3FB950", closed="#F85149", accent="#58A6FF")
+
+
+def fit(s: str, n: int) -> str:
+    return s if len(s) <= n else s[: n - 1] + "…"
+
+
+def terminal_lines(prs: list[dict]) -> list[dict]:
+    """Each line: {'segs': [(text, color)], 'typed': bool}. Typed lines start with the prompt."""
+    P = [(PROMPT, "prompt")]
+    lines: list[dict] = [
+        {"typed": True, "segs": P + [("whoami", "cmd")]},
+        {"typed": False, "segs": [(NAME, "cmd"),
+                                  ("  ·  I build AI products: agent systems, creative tooling, full-stack apps.", "out")]},
+        {"typed": True, "segs": P + [("ls ~/projects", "cmd")]},
+        {"typed": False, "segs": [("wenyao/", "dir"), ("    ", "out"), ("tiktok-ai-skills/", "dir")]},
+        {"typed": True, "segs": P + [("gh pr list --author @me --search 'is:pr -user:@me' --limit 4", "cmd")]},
+    ]
+    repo_w = 30
+    for pr in prs[:4]:
+        repo = fit(pr["repo"], repo_w).ljust(repo_w)
+        state = pr["state"].ljust(7)
+        title = fit(pr["title"], MAX_COLS - 2 - 7 - 1 - repo_w - 2)
+        lines.append({"typed": False, "segs": [
+            ("● ", pr["state"]), (state, pr["state"]), (" ", "out"), (repo, "accent"), ("  ", "out"), (title, "out"),
+        ]})
+    lines.append({"typed": True, "segs": list(P)})  # idle prompt with a blinking caret
+    return lines
+
+
+def clip(i: int, y: int, start_w: float, anims: str) -> str:
+    return (f'<clipPath id="c{i}"><rect x="{PAD_X}" y="{y - 22}" width="{start_w:.1f}" '
+            f'height="{LINE_H}">{anims}</rect></clipPath>')
+
+
+def render_svg(prs: list[dict]) -> str:
+    lines = terminal_lines(prs)
+    height = TOP + LINE_H * len(lines) + 24
+    t = 0.6  # timeline cursor in seconds
+    defs, body, caret = [], [], []
+    p = len(PROMPT)
+
+    for i, ln in enumerate(lines):
+        y = TOP + i * LINE_H
+        text = "".join(s for s, _ in ln["segs"])
+        n = len(text)
+        width = n * CW
+        tspans = "".join(f'<tspan fill="{C[c]}">{html.escape(s)}</tspan>' for s, c in ln["segs"])
+        body.append(f'<text x="{PAD_X}" y="{y}" clip-path="url(#c{i})" textLength="{width:.1f}" '
+                    f'lengthAdjust="spacing">{tspans}</text>')
+
+        if not ln["typed"]:
+            defs.append(clip(i, y, 0, f'<set attributeName="width" to="{width:.1f}" begin="{t:.2f}s" fill="freeze"/>'))
+            t += 0.12
+            if i + 1 < len(lines) and lines[i + 1]["typed"]:
+                t += 0.45
+            continue
+
+        typed = n - p
+        caret.append(f'<set attributeName="y" to="{y - 17}" begin="{t:.2f}s" fill="freeze"/>')
+        if typed:
+            dur = typed * CMD_CPS
+            values = ";".join(f"{(p + k) * CW:.1f}" for k in range(typed + 1))
+            xs = ";".join(f"{PAD_X + (p + k) * CW:.1f}" for k in range(typed + 1))
+            defs.append(clip(i, y, 0,
+                             f'<set attributeName="width" to="{p * CW:.1f}" begin="{t:.2f}s" fill="freeze"/>'
+                             f'<animate attributeName="width" begin="{t:.2f}s" dur="{dur:.2f}s" values="{values}" '
+                             f'calcMode="discrete" fill="freeze"/>'))
+            caret.append(f'<set attributeName="opacity" to="1" begin="{t:.2f}s" fill="freeze"/>')
+            caret.append(f'<animate attributeName="x" begin="{t:.2f}s" dur="{dur:.2f}s" values="{xs}" '
+                         f'calcMode="discrete" fill="freeze"/>')
+            t += dur + 0.35
+            caret.append(f'<set attributeName="opacity" to="0" begin="{t:.2f}s" fill="freeze"/>')
+        else:
+            defs.append(clip(i, y, 0, f'<set attributeName="width" to="{width:.1f}" begin="{t:.2f}s" fill="freeze"/>'))
+            caret.append(f'<set attributeName="x" to="{PAD_X + p * CW:.1f}" begin="{t:.2f}s" fill="freeze"/>')
+            caret.append(f'<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.55;0.55;1" '
+                         f'dur="1.1s" begin="{t:.2f}s" repeatCount="indefinite"/>')
+
+    caret_el = (f'<rect x="{PAD_X}" y="{TOP - 17}" width="{CW:.1f}" height="22" rx="1" '
+                f'fill="{C["cmd"]}" opacity="0">' + "".join(caret) + "</rect>")
+    nl = "\n"
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{height}" viewBox="0 0 {W} {height}" role="img" aria-labelledby="t d">
+<title id="t">{NAME} ({LOGIN}) terminal</title>
+<desc id="d">Animated terminal: whoami, projects wenyao and tiktok-ai-skills, and recent pull requests to other open-source repositories.</desc>
+<style>text{{font-family:{FONT};font-size:{FS}px;white-space:pre}}</style>
+<defs>{"".join(defs)}</defs>
+<rect x="0.5" y="0.5" width="{W - 1}" height="{height - 1}" rx="14" fill="{C['bg']}" stroke="{C['border']}"/>
+<path d="M14.5 0.5h{W - 29}a14 14 0 0 1 14 14v31.5H0.5V14.5a14 14 0 0 1 14-14z" fill="{C['bar']}"/>
+<line x1="0.5" y1="46" x2="{W - 0.5}" y2="46" stroke="{C['border']}"/>
+<circle cx="26" cy="23" r="6" fill="#FF5F57"/><circle cx="46" cy="23" r="6" fill="#FEBC2E"/><circle cx="66" cy="23" r="6" fill="#28C840"/>
+<text x="{W / 2}" y="29" text-anchor="middle" fill="{C['title']}" font-size="14">{NAME}@github — ~</text>
+{nl.join(body)}
+{caret_el}
+</svg>
+"""
+
+
+# --------------------------------------------------------------- readme -----
+
+
+def prs_markdown(prs: list[dict]) -> str:
+    rows = ["| | Repository | Pull request | |", "| :-- | :-- | :-- | --: |"]
+    for pr in prs[:8]:
+        rows.append(f"| `{pr['state']}` | [{pr['repo']}](https://github.com/{pr['repo']}) "
+                    f"| [{pr['title']}]({pr['url']}) | {pr['date'].replace('-', '&#8209;')} |")
+    rows.append("")
+    rows.append(f"<sub>Updated {date.today().isoformat()} · regenerated daily by GitHub Actions</sub>")
+    return "\n".join(rows)
+
+
+def update_readme(prs: list[dict]) -> None:
+    md = open(README_PATH, encoding="utf-8").read()
+    if "<!-- prs:start -->" not in md or "<!-- prs:end -->" not in md:
+        raise SystemExit("README.md has no <!-- prs:start --> / <!-- prs:end --> markers")
+    block = "<!-- prs:start -->\n" + prs_markdown(prs) + "\n<!-- prs:end -->"
+    new = re.sub(r"<!-- prs:start -->.*?<!-- prs:end -->", lambda m: block, md, flags=re.S)
+    open(README_PATH, "w", encoding="utf-8", newline="\n").write(new)
+
+
+if __name__ == "__main__":
+    prs = fetch_prs()
+    os.makedirs(os.path.dirname(SVG_PATH), exist_ok=True)
+    open(SVG_PATH, "w", encoding="utf-8", newline="\n").write(render_svg(prs))
+    update_readme(prs)
+    print(f"{len(prs)} pull requests · wrote assets/terminal.svg and README.md")
