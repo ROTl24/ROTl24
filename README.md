@@ -34,6 +34,9 @@ Turns a product photo into a shoot-ready TikTok UGC ad plan. Storyboard-first, w
 Merged fixes I've sent to repositories I don't own, newest first.
 
 <!-- prs:start -->
+<img src="./assets/icons/merged.svg" width="16" height="16" alt="merged" align="top">&nbsp; **[chrisryugj/kordoc](https://github.com/chrisryugj/kordoc)** [#82](https://github.com/chrisryugj/kordoc/pull/82) · fix(watch): preserve subdirectories in converted output  
+<sub>2026-09-24</sub>
+
 <img src="./assets/icons/merged.svg" width="16" height="16" alt="merged" align="top">&nbsp; **[NandhaKishorM/laya](https://github.com/NandhaKishorM/laya)** [#23](https://github.com/NandhaKishorM/laya/pull/23) · fix(lang): recognize Armenian text when routing requests  
 <sub>2026-09-20</sub>
 
@@ -43,7 +46,7 @@ Merged fixes I've sent to repositories I don't own, newest first.
 <img src="./assets/icons/merged.svg" width="16" height="16" alt="merged" align="top">&nbsp; **[msitarzewski/agency-agents-app](https://github.com/msitarzewski/agency-agents-app)** [#85](https://github.com/msitarzewski/agency-agents-app/pull/85) · Prevent background console windows from flashing on Windows  
 <sub>2026-08-10</sub>
 
-<sub>Updated 2026-09-24 · regenerated daily by GitHub Actions</sub>
+<sub>Updated 2026-09-25 · regenerated daily by GitHub Actions</sub>
 <!-- prs:end -->
 
 <br>
