@@ -43,10 +43,13 @@ Merged fixes I've sent to repositories I don't own, newest first.
 <img src="./assets/icons/merged.svg" width="16" height="16" alt="merged" align="top">&nbsp; **[microsoft/markitdown](https://github.com/microsoft/markitdown)** [#2450](https://github.com/microsoft/markitdown/pull/2450) · Trim CSV blank runs without repeatedly shifting the row list  
 <sub>2026-09-10</sub>
 
+<img src="./assets/icons/merged.svg" width="16" height="16" alt="merged" align="top">&nbsp; **[theskumar/python-dotenv](https://github.com/theskumar/python-dotenv)** [#698](https://github.com/theskumar/python-dotenv/pull/698) · Fix variable expansion in dotenv run --no-override  
+<sub>2026-09-08</sub>
+
 <img src="./assets/icons/merged.svg" width="16" height="16" alt="merged" align="top">&nbsp; **[msitarzewski/agency-agents-app](https://github.com/msitarzewski/agency-agents-app)** [#85](https://github.com/msitarzewski/agency-agents-app/pull/85) · Prevent background console windows from flashing on Windows  
 <sub>2026-08-10</sub>
 
-<sub>Updated 2026-09-29 · regenerated daily by GitHub Actions</sub>
+<sub>Updated 2026-09-30 · regenerated daily by GitHub Actions</sub>
 <!-- prs:end -->
 
 <br>
