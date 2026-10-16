@@ -34,6 +34,9 @@ Turns a product photo into a shoot-ready TikTok UGC ad plan. Storyboard-first, w
 Merged fixes I've sent to repositories I don't own, newest first.
 
 <!-- prs:start -->
+<img src="./assets/icons/merged.svg" width="16" height="16" alt="merged" align="top">&nbsp; **[CrocSwap/integer-mult-bounds](https://github.com/CrocSwap/integer-mult-bounds)** [#2334](https://github.com/CrocSwap/integer-mult-bounds/pull/2334) · research: nine-line counterexample to the B2 acyclic-edge strengthening  
+<sub>2026-10-15</sub>
+
 <img src="./assets/icons/merged.svg" width="16" height="16" alt="merged" align="top">&nbsp; **[coji/natural-japanese](https://github.com/coji/natural-japanese)** [#8](https://github.com/coji/natural-japanese/pull/8) · fix(input): strip UTF-8 BOM before Markdown analysis  
 <sub>2026-09-24</sub>
 
@@ -52,7 +55,7 @@ Merged fixes I've sent to repositories I don't own, newest first.
 <img src="./assets/icons/merged.svg" width="16" height="16" alt="merged" align="top">&nbsp; **[msitarzewski/agency-agents-app](https://github.com/msitarzewski/agency-agents-app)** [#85](https://github.com/msitarzewski/agency-agents-app/pull/85) · Prevent background console windows from flashing on Windows  
 <sub>2026-08-10</sub>
 
-<sub>Updated 2026-10-15 · regenerated daily by GitHub Actions</sub>
+<sub>Updated 2026-10-16 · regenerated daily by GitHub Actions</sub>
 <!-- prs:end -->
 
 <br>
